@@ -49,45 +49,51 @@
             return weapon[randomNum()];
         }
 
-        const playerSelection = "paper";
-        const computerSelection = "scissors";
-
-
+        
+        let computerWinCount = 0;
+        let playerWinCount = 0;
 
         function playRound(playerSelection, computerSelection) {
-            let playerCounter;
-            let computerCounter;
-            let result;
+
             if (playerSelection == computerSelection) {
                 return "It's a draw!";
             }
-            else if (playerSelection=="rock"&&computerSelection=="paper"){
+            else if (playerSelection == "rock" && computerSelection == "paper") {
+                computerWinCount++;
                 return "You lose, paper covers rock!";
             }
-            else if (playerSelection=="rock"&&computerSelection=="scissors"){
+            else if (playerSelection == "rock" && computerSelection == "scissors") {
+                playerWinCount++;
                 return "You win, rock smashes scissors!";
             }
 
-            else if (playerSelection=="paper"&&computerSelection=="rock"){
+            else if (playerSelection == "paper" && computerSelection == "rock") {
+                playerWinCount++;
                 return "You win, paper covers rock!";
             }
-            else if (playerSelection=="paper"&&computerSelection=="scissors"){
+            else if (playerSelection == "paper" && computerSelection == "scissors") {
+                computerWinCount++;
                 return "You lose, scissors cuts paper!";
             }
 
-            else if (playerSelection=="scissors"&&computerSelection=="rock"){
+            else if (playerSelection == "scissors" && computerSelection == "rock") {
+                computerWinCount++;
                 return "You lose, rock smashes scissors!";
             }
-            else if (playerSelection=="scissors"&&computerSelection=="paper"){
+            else if (playerSelection == "scissors" && computerSelection == "paper") {
+                playerWinCount++;
                 return "You win, sissors cuts paper!";
             }
-
-
-         
-
         }
+
+        for(let i=0;i<5;i++){
+            // const playerSelection = computerPlay();
+        const computerSelection = computerPlay();
         console.log(playRound(playerSelection, computerSelection));
-        return "The game has begun";
+        }
+        console.log(`player win count is: ${playerWinCount}`);
+        console.log(`computer win count is: ${computerWinCount}`);
+        return "The game has ended";
     }
 
     console.log(game());
