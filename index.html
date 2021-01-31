@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+
+<head>
+    <title>
+        Rock, Paper, Scissors!
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta id="metaDescrip" name="description"
+        content="Play Rock Paper Scissors against the fearsome cunning of the computer">
+
+    <style>
+        @font-face {
+            font-family: 'Ubuntu', sans-serif;
+            src: url(https://fonts.gstatic.com/s/ubuntu/v15/4iCs6KVjbNBYlgoKcg72j00.woff2) format('woff2');
+            font-display: swap;
+        }
+
+        html,
+        body {
+            margin: 0;
+            padding: 0;
+            color: rgba(68, 68, 68, 0.9);
+            font-family: 'Ubuntu', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+    </style>
+
+</head>
+
+<h1>Rock Paper Scissors!</h1>
+
+
+<script>
+    function computerPlay() {
+        let weapon = ["rock", "paper", "scissors"];
+
+        function randomNum() {
+            return foo = Math.floor(Math.random() * 3);
+        }
+        return weapon[randomNum()];
+    }
+
+</script>
+
+</html>
