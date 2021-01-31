@@ -45,6 +45,43 @@
         return weapon[randomNum()];
     }
 
+    const playerSelection="rock";
+const computerSelection=computerPlay();
+
+    function playRound(playerSelection,computerSelection) {
+ 
+    if (playerSelection==computerSelection){
+        return "It's a draw!";
+    }    
+    
+    switch (playerSelection=="rock") {
+        case computerSelection=="paper":
+            return "You lose, paper covers rock";
+
+            case computerSelection=="scissors":
+                return "You win, rock smashes scissors";
+    }
+
+    switch (playerSelection=="paper") {
+        case computerSelection=="rock":
+            return "You win, paper covers rock";
+
+            case computerSelection=="scissors":
+                return "You lose, scissors cut paper";
+    }
+
+    switch (playerSelection=="scissors") {
+        case computerSelection=="rock":
+            return "You lose, rock smashes scissors";
+
+            case computerSelection=="paper":
+                return "You win, scissors cut paper";
+    }
+      
+    }
+
+    console.log(playRound(playerSelection,computerSelection));
+ 
 </script>
 
 </html>
