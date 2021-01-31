@@ -52,10 +52,13 @@
         
         let computerWinCount = 0;
         let playerWinCount = 0;
+        let roundCount=0;
+        let roundsPlayed=0;
 
         function playRound(playerSelection, computerSelection) {
 
             if (playerSelection == computerSelection) {
+                roundCount--;
                 return "It's a draw!";
             }
             else if (playerSelection == "rock" && computerSelection == "paper") {
@@ -86,13 +89,26 @@
             }
         }
 
-        for(let i=0;i<5;i++){
+        for(roundCount;roundCount<5;roundCount++){
             // const playerSelection = computerPlay();
+            const playerSelection=computerPlay();
         const computerSelection = computerPlay();
+        roundsPlayed++;
         console.log(playRound(playerSelection, computerSelection));
         }
         console.log(`player win count is: ${playerWinCount}`);
         console.log(`computer win count is: ${computerWinCount}`);
+
+        if (playerWinCount>computerWinCount){
+            console.log("Congrats you whopped the computer's butt!");
+        }
+        else if (playerWinCount<computerWinCount){
+            console.log("You lost ya jabroni");
+        }
+        else {
+            console.log("It's a draw!");
+        }
+        console.log(`rounds played is: ${roundsPlayed}`);
         return "The game has ended";
     }
 
