@@ -49,8 +49,8 @@
             return weapon[randomNum()];
         }
 
-        const playerSelection = "scissors";
-        const computerSelection = "paper";
+        const playerSelection = "paper";
+        const computerSelection = "scissors";
 
 
 
@@ -61,6 +61,28 @@
             if (playerSelection == computerSelection) {
                 return "It's a draw!";
             }
+            else if (playerSelection=="rock"&&computerSelection=="paper"){
+                return "You lose, paper covers rock!";
+            }
+            else if (playerSelection=="rock"&&computerSelection=="scissors"){
+                return "You win, rock smashes scissors!";
+            }
+
+            else if (playerSelection=="paper"&&computerSelection=="rock"){
+                return "You win, paper covers rock!";
+            }
+            else if (playerSelection=="paper"&&computerSelection=="scissors"){
+                return "You lose, scissors cuts paper!";
+            }
+
+            else if (playerSelection=="scissors"&&computerSelection=="rock"){
+                return "You lose, rock smashes scissors!";
+            }
+            else if (playerSelection=="scissors"&&computerSelection=="paper"){
+                return "You win, sissors cuts paper!";
+            }
+
+
          
 
         }
