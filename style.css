@@ -41,3 +41,7 @@ flex-direction: column;
 .player-stats {
     text-align: center;
 }
+
+.game-results {
+    text-align: center;
+}
