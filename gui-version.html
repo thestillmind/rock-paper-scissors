@@ -35,9 +35,15 @@
         </div>
 
         <div class="player-selection">
-            <img src="img/rock.png" alt="image of a rock">
-            <img src="img/paper.png" alt="image of paper">
-            <img src="img/scissors.png" alt="image of paper">
+            <div class="player-icons">
+                <img src="img/rock.png" alt="image of a rock">
+                <img src="img/paper.png" alt="image of paper">
+                <img src="img/scissors.png" alt="image of paper">
+            </div>
+            <div class="player-stats">
+                <p>Your score is:</p>
+                <p id="player-score">0</p>
+            </div>
         </div>
 
 
@@ -108,6 +114,12 @@
             roundsPlayed++;
             console.log(playRound(playerSelection, computerSelection));
         }
+        let computerScoreDisplay = document.querySelector('#comp-score');
+        computerScoreDisplay.innerText = computerWinCount;
+        let playerScoreDisplay = document.querySelector('#player-score');
+        playerScoreDisplay.innerText=playerWinCount;
+
+
         console.log(`player win count is: ${playerWinCount}`);
         console.log(`computer win count is: ${computerWinCount}`);
 

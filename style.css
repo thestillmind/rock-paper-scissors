@@ -29,6 +29,15 @@ align-items:center;
 }
 
 .player-selection {
-    display: flex;
-    align-items: center;
+display: flex;
+flex-direction: column;
+}
+
+.player-icons {
+    display:flex;
+    align-items:center;
+}
+
+.player-stats {
+    text-align: center;
 }
