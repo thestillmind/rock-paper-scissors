@@ -36,17 +36,18 @@
 
 
 <script>
+/*Remember variable names should begin with a noun,
+function names shouls begin with a verb.*/
 
 
-
-    function game() {
-        function computerPlay() {
+    function playGame() {
+        function generateCompChoice() {
             let weapon = ["rock", "paper", "scissors"];
 
-            function randomNum() {
+            function getRandomNum() {
                 return foo = Math.floor(Math.random() * 3);
             }
-            return weapon[randomNum()];
+            return weapon[getRandomNum()];
         }
 
         
@@ -90,9 +91,10 @@
         }
 
         for(roundCount;roundCount<5;roundCount++){
-            // const playerSelection = computerPlay();
-            const playerSelection=computerPlay();
-        const computerSelection = computerPlay();
+           
+           // const playerSelection=generateCompChoice();
+           const playerSelection=prompt("rock, paper or scissors?");
+        const computerSelection = generateCompChoice();
         roundsPlayed++;
         console.log(playRound(playerSelection, computerSelection));
         }
@@ -112,7 +114,7 @@
         return "The game has ended";
     }
 
-    console.log(game());
+    console.log(playGame());
 
 </script>
 
