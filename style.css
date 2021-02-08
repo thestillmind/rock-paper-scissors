@@ -23,9 +23,24 @@ align-items:center;
    display:flex;
    align-items: center;
    flex-direction: column;
+   background-color: red;
+   height:180px;
 }
 .computer-selection p {
     text-align:center;
+}
+
+.computer-stats {
+    display:flex;
+    justify-self: flex-end;
+}
+
+.comp-icon-container{
+    display: flex;
+    justify-items: center;
+    align-content: center;
+    align-items: flex-end;
+    height:100px;
 }
 
 .player-selection {

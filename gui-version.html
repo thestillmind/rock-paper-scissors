@@ -27,7 +27,9 @@
     <div class="game-area">
 
         <div class="computer-selection">
-            <img id="comp-icon" src="img/rock.png" alt="image of a rock">
+            <div class="comp-icon-container">
+                <img id="comp-icon" src="img/rock.png" alt="image of a rock">
+            </div>
             <div class="computer-stats">
                 <p>Computer score is:</p>
                 <p id="comp-score">0</p>
@@ -77,88 +79,88 @@
         let roundsPlayed = 0;
 
         const playerIcons = Array.from(document.querySelectorAll('.weapon'));
-   playerIcons.forEach(key => key.addEventListener('click', playRound));
+        playerIcons.forEach(key => key.addEventListener('click', playRound));
 
         function playRound(e) {
-          
-            const playerSelection=this.id;
-            const computerSelection =generateCompChoice();
-           const computerIcon=document.querySelector("#comp-icon");
-            console.log("comp selection is: "+computerSelection);
-           computerIcon.setAttribute("src","img/"+computerSelection+".png");
+
+            const playerSelection = this.id;
+            const computerSelection = generateCompChoice();
+            const computerIcon = document.querySelector("#comp-icon");
+            console.log("comp selection is: " + computerSelection);
+            computerIcon.setAttribute("src", "img/" + computerSelection + "3.png");
             if (playerSelection == computerSelection) {
                 roundCount--;
                 //return "It's a draw!";
             }
             else if (playerSelection == "rock" && computerSelection == "paper") {
                 computerWinCount++;
-            
-              
+
+
                 //return "You lose, paper covers rock!";
             }
             else if (playerSelection == "rock" && computerSelection == "scissors") {
                 playerWinCount++;
-             
+
                 // return "You win, rock smashes scissors!";
             }
 
             else if (playerSelection == "paper" && computerSelection == "rock") {
                 playerWinCount++;
-               
-               // return "You win, paper covers rock!";
+
+                // return "You win, paper covers rock!";
             }
             else if (playerSelection == "paper" && computerSelection == "scissors") {
                 computerWinCount++;
-              
-               // return "You lose, scissors cuts paper!";
+
+                // return "You lose, scissors cuts paper!";
             }
 
             else if (playerSelection == "scissors" && computerSelection == "rock") {
                 computerWinCount++;
-            
-               // return "You lose, rock smashes scissors!";
+
+                // return "You lose, rock smashes scissors!";
             }
             else if (playerSelection == "scissors" && computerSelection == "paper") {
                 playerWinCount++;
-                
-               // return "You win, sissors cuts paper!";
+
+                // return "You win, sissors cuts paper!";
             }
 
-        
+
             roundsPlayed++;
 
 
-        const computerScoreDisplay = document.querySelector('#comp-score');
-        computerScoreDisplay.innerText = computerWinCount;
-        const playerScoreDisplay = document.querySelector('#player-score');
-        playerScoreDisplay.innerText = playerWinCount;
+            const computerScoreDisplay = document.querySelector('#comp-score');
+            computerScoreDisplay.innerText = computerWinCount;
+            const playerScoreDisplay = document.querySelector('#player-score');
+            playerScoreDisplay.innerText = playerWinCount;
 
-        const gameResultsDisplay = document.querySelector('#game-results');
+            const gameResultsDisplay = document.querySelector('#game-results');
 
 
-        console.log(`player win count is: ${playerWinCount}`);
-        console.log(`computer win count is: ${computerWinCount}`);
+            console.log(`player win count is: ${playerWinCount}`);
+            console.log(`computer win count is: ${computerWinCount}`);
 
-        if (playerWinCount > computerWinCount) {
-            console.log("Congrats you whopped the computer's butt!");
-            gameResultsDisplay.innerText = "Congrats you whopped the computer's butt!";
+            if (playerWinCount > computerWinCount) {
+                console.log("Congrats you whopped the computer's butt!");
+                gameResultsDisplay.innerText = "Congrats you whopped the computer's butt!";
+            }
+            else if (playerWinCount < computerWinCount) {
+                console.log("You lost ya jabroni");
+                gameResultsDisplay.innerText = "You lost ya jabroni";
+
+            }
+            else {
+                console.log("It's a draw!");
+                gameResultsDisplay.innerText = "It's a draw";
+            }
+            console.log(`rounds played is: ${roundsPlayed}`);
+
         }
-        else if (playerWinCount < computerWinCount) {
-            console.log("You lost ya jabroni");
-            gameResultsDisplay.innerText = "You lost ya jabroni";
 
-        }
-        else {
-            console.log("It's a draw!");
-            gameResultsDisplay.innerText = "It's a draw";
-        }
-        console.log(`rounds played is: ${roundsPlayed}`);
-       
-        }
+        console.log(computerWinCount);
 
-       console.log(computerWinCount);
-  
-// return "The game has ended";
+        // return "The game has ended";
     }
 
     playGame();
