@@ -36,9 +36,9 @@
 
         <div class="player-selection">
             <div class="player-icons">
-                <img src="img/rock.png" alt="image of a rock">
-                <img src="img/paper.png" alt="image of paper">
-                <img src="img/scissors.png" alt="image of paper">
+                <img id="rock" class="weapon" src="img/rock.png" alt="image of a rock">
+                <img id="paper" class="weapon" src="img/paper.png" alt="image of paper">
+                <img id="scissors" class="weapon" src="img/scissors.png" alt="image of paper">
             </div>
             <div class="player-stats">
                 <p>Your score is:</p>
@@ -76,49 +76,58 @@
         let roundCount = 0;
         let roundsPlayed = 0;
 
-        function playRound(playerSelection, computerSelection) {
+        const playerIcons = Array.from(document.querySelectorAll('.weapon'));
+   playerIcons.forEach(key => key.addEventListener('click', playRound));
 
+        function playRound(e) {
+            console.log(this.id);
+            const playerSelection=this.id;
+            const computerSelection =generateCompChoice();
+           
+           // console.log(computerSelection());
             if (playerSelection == computerSelection) {
                 roundCount--;
-                return "It's a draw!";
+                //return "It's a draw!";
             }
             else if (playerSelection == "rock" && computerSelection == "paper") {
                 computerWinCount++;
-                return "You lose, paper covers rock!";
+                console.log('geezer');
+              
+                //return "You lose, paper covers rock!";
             }
             else if (playerSelection == "rock" && computerSelection == "scissors") {
                 playerWinCount++;
-                return "You win, rock smashes scissors!";
+                console.log('sneezer');
+                // return "You win, rock smashes scissors!";
             }
 
             else if (playerSelection == "paper" && computerSelection == "rock") {
                 playerWinCount++;
-                return "You win, paper covers rock!";
+               
+               // return "You win, paper covers rock!";
             }
             else if (playerSelection == "paper" && computerSelection == "scissors") {
                 computerWinCount++;
-                return "You lose, scissors cuts paper!";
+              
+               // return "You lose, scissors cuts paper!";
             }
 
             else if (playerSelection == "scissors" && computerSelection == "rock") {
                 computerWinCount++;
-                return "You lose, rock smashes scissors!";
+            
+               // return "You lose, rock smashes scissors!";
             }
             else if (playerSelection == "scissors" && computerSelection == "paper") {
                 playerWinCount++;
-                return "You win, sissors cuts paper!";
+                
+               // return "You win, sissors cuts paper!";
             }
-        }
 
-        for (roundCount; roundCount < 5; roundCount++) {
-
-            const playerSelection = generateCompChoice();
-            // const playerSelection=prompt("rock, paper or scissors?");
-            const computerSelection = generateCompChoice();
+            console.log("hello again!");
+            console.log(roundsPlayed);
             roundsPlayed++;
-            // console.log(playRound(playerSelection, computerSelection));
-            playRound(playerSelection, computerSelection);
-        }
+
+
         const computerScoreDisplay = document.querySelector('#comp-score');
         computerScoreDisplay.innerText = computerWinCount;
         const playerScoreDisplay = document.querySelector('#player-score');
@@ -144,10 +153,15 @@
             gameResultsDisplay.innerText = "It's a draw";
         }
         console.log(`rounds played is: ${roundsPlayed}`);
-        return "The game has ended";
+       
+        }
+
+       console.log(computerWinCount);
+  
+// return "The game has ended";
     }
 
-    console.log(playGame());
+    playGame();
 
 </script>
 
