@@ -31,10 +31,10 @@
                 <img id="comp-icon" src="img/rock.png" alt="image of a rock">
             </div>
             <div class="computer-stats">
-                
+
                 <span>Computer score is:</span>
                 <span id="comp-score">0</span>
-                
+
             </div>
         </div>
 
@@ -64,7 +64,7 @@
     function names should begin with a verb.*/
 
 
-    function playGame() {
+    function playGame(e) {
 
         function generateCompChoice() {
             let weapon = ["rock", "paper", "scissors"];
@@ -83,86 +83,109 @@
         const playerIcons = Array.from(document.querySelectorAll('.weapon'));
         playerIcons.forEach(key => key.addEventListener('click', playRound));
 
-        function playRound(e) {
-
+        function playRound() {
             const playerSelection = this.id;
             const computerSelection = generateCompChoice();
             const computerIcon = document.querySelector("#comp-icon");
-            console.log("comp selection is: " + computerSelection);
             computerIcon.setAttribute("src", "img/" + computerSelection + "3.png");
+
             if (playerSelection == computerSelection) {
                 roundCount--;
+                console.log("round count " + roundCount);
                 //return "It's a draw!";
             }
             else if (playerSelection == "rock" && computerSelection == "paper") {
                 computerWinCount++;
+                console.log("computer win " + computerWinCount);
                 //return "You lose, paper covers rock!";
             }
             else if (playerSelection == "rock" && computerSelection == "scissors") {
                 playerWinCount++;
+                console.log("player win " + playerWinCount);
                 // return "You win, rock smashes scissors!";
             }
 
             else if (playerSelection == "paper" && computerSelection == "rock") {
                 playerWinCount++;
+                console.log("player win " + playerWinCount);
                 // return "You win, paper covers rock!";
             }
             else if (playerSelection == "paper" && computerSelection == "scissors") {
                 computerWinCount++;
+                console.log("comp win " + computerWinCount);
                 // return "You lose, scissors cuts paper!";
             }
 
             else if (playerSelection == "scissors" && computerSelection == "rock") {
                 computerWinCount++;
+                console.log("com win " + computerWinCount);
                 // return "You lose, rock smashes scissors!";
             }
             else if (playerSelection == "scissors" && computerSelection == "paper") {
                 playerWinCount++;
+                console.log("player win " + playerWinCount);
                 // return "You win, sissors cuts paper!";
             }
-            
-            roundsPlayed++;
 
+            showScores();
+            isGameOver();
+        }
+        function showScores() {
 
             const computerScoreDisplay = document.querySelector('#comp-score');
             computerScoreDisplay.innerText = computerWinCount;
             const playerScoreDisplay = document.querySelector('#player-score');
-            playerScoreDisplay.innerText = playerWinCount;
-
-            const gameResultsDisplay = document.querySelector('#game-results');
-
-
-            console.log(`player win count is: ${playerWinCount}`);
-            console.log(`computer win count is: ${computerWinCount}`);
-
-            if ((playerWinCount>=5)||(computerWinCount)>=5){
-            if (playerWinCount > computerWinCount) {
-                console.log("Congrats you whopped the computer's butt!");
-                gameResultsDisplay.innerText = "Congrats you whopped the computer's butt!";
-            }
-            else if (playerWinCount < computerWinCount) {
-                console.log("You lost ya jabroni");
-                gameResultsDisplay.innerText = "You lost ya jabroni";
-
-            }
-            else {
-                console.log("It's a draw!");
-                gameResultsDisplay.innerText = "It's a draw";
-            }
-
-            playerWinCount=0;
-            computerWinCount=0;
-        }
-            console.log(`rounds played is: ${roundsPlayed}`);
+            playerScoreDisplay.innerText = playerWinCount; 
+            
+            let foo={computer: computerScoreDisplay,
+            player:playerScoreDisplay
+            };
+            return foo;
 
         }
 
-        console.log(computerWinCount);
+        function isGameOver() {
+           
+            if ((playerWinCount >= 5) || (computerWinCount) >= 5) {
+                const gameResultsDisplay = document.querySelector('#game-results');
+            const gameResults = document.querySelector('.game-results');
 
-        // return "The game has ended";
+                if (playerWinCount > computerWinCount) {
+                    console.log("Congrats you whopped the computer's butt!");
+                    gameResultsDisplay.innerText = "Congrats you whopped the computer's butt!";
+                }
+                else if (playerWinCount < computerWinCount) {
+                    console.log("You lost ya jabroni");
+                    gameResultsDisplay.innerText = "You lost ya jabroni";
+
+                }
+                else {
+                    console.log("It's a draw!");
+                    gameResultsDisplay.innerText = "It's a draw";
+                }
+                resetGame(showScores().player,showScores().computer);
+            }
+            
+        }
+        function resetGame(player,computer){
+           // computerScoreDisplay.innerText ='0';
+           // playerScoreDisplay.innerText='0';
+           //showScores().player.innerText='0';
+          // showScores().computer.innerText='0';
+        // console.log("input is "+input);
+         player.innerText='0';
+         computer.innerText='0';
+           alert("ive ran to here!");
+         
+        }
+
     }
 
     playGame();
+
+    // const resetBtn = document.createElement('button');
+    // resetBtn.innerText = "Play again, fool?";
+    // resetBtn.addEventListener('click', () => playGame());
 
 </script>
 
