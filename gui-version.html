@@ -135,20 +135,21 @@
             const computerScoreDisplay = document.querySelector('#comp-score');
             computerScoreDisplay.innerText = computerWinCount;
             const playerScoreDisplay = document.querySelector('#player-score');
-            playerScoreDisplay.innerText = playerWinCount; 
-            
-            let foo={computer: computerScoreDisplay,
-            player:playerScoreDisplay
+            playerScoreDisplay.innerText = playerWinCount;
+
+            let foo = {
+                computer: computerScoreDisplay,
+                player: playerScoreDisplay
             };
             return foo;
 
         }
 
         function isGameOver() {
-           
+
             if ((playerWinCount >= 5) || (computerWinCount) >= 5) {
                 const gameResultsDisplay = document.querySelector('#game-results');
-            const gameResults = document.querySelector('.game-results');
+                const gameResults = document.querySelector('.game-results');
 
                 if (playerWinCount > computerWinCount) {
                     console.log("Congrats you whopped the computer's butt!");
@@ -163,20 +164,22 @@
                     console.log("It's a draw!");
                     gameResultsDisplay.innerText = "It's a draw";
                 }
-                resetGame(showScores().player,showScores().computer);
+                resetGame(showScores().player, showScores().computer);
             }
-            
+
         }
-        function resetGame(player,computer){
-           // computerScoreDisplay.innerText ='0';
-           // playerScoreDisplay.innerText='0';
-           //showScores().player.innerText='0';
-          // showScores().computer.innerText='0';
-        // console.log("input is "+input);
-         player.innerText='0';
-         computer.innerText='0';
-           alert("ive ran to here!");
-         
+        function resetGame(player, computer) {
+            // computerScoreDisplay.innerText ='0';
+            // playerScoreDisplay.innerText='0';
+            //showScores().player.innerText='0';
+            // showScores().computer.innerText='0';
+            // console.log("input is "+input);
+            player.innerText = '0';
+            computer.innerText = '0';
+            alert("ive ran to here!");
+            computerWinCount = 0;
+            playerWinCount = 0;
+
         }
 
     }
