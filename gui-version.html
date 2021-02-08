@@ -52,6 +52,7 @@
 
         <div class="game-results">
             <p id="game-results">This is where the results go</p>
+            <button id="reset-btn">Reset</button>
         </div>
 
 
@@ -79,7 +80,9 @@
         let playerWinCount = 0;
         let roundCount = 0;
         let roundsPlayed = 0;
-
+        const computerScoreDisplay = document.querySelector('#comp-score');
+        const gameResultsDisplay = document.querySelector('#game-results');
+       // gameResultsDisplay.innerText = "";
         const playerIcons = Array.from(document.querySelectorAll('.weapon'));
         playerIcons.forEach(key => key.addEventListener('click', playRound));
 
@@ -132,7 +135,6 @@
         }
         function showScores() {
 
-            const computerScoreDisplay = document.querySelector('#comp-score');
             computerScoreDisplay.innerText = computerWinCount;
             const playerScoreDisplay = document.querySelector('#player-score');
             playerScoreDisplay.innerText = playerWinCount;
@@ -148,9 +150,7 @@
         function isGameOver() {
 
             if ((playerWinCount >= 5) || (computerWinCount) >= 5) {
-                const gameResultsDisplay = document.querySelector('#game-results');
-                const gameResults = document.querySelector('.game-results');
-
+               
                 if (playerWinCount > computerWinCount) {
                     console.log("Congrats you whopped the computer's butt!");
                     gameResultsDisplay.innerText = "Congrats you whopped the computer's butt!";
@@ -164,7 +164,11 @@
                     console.log("It's a draw!");
                     gameResultsDisplay.innerText = "It's a draw";
                 }
-                resetGame(showScores().player, showScores().computer);
+               // resetGame(showScores().player, showScores().computer);
+               playerIcons.forEach(key => key.removeEventListener('click', playRound));
+
+               const resetBtn=document.querySelector('#reset-btn');
+            resetBtn.addEventListener('click',()=>resetGame(showScores().player, showScores().computer));
             }
 
         }
@@ -174,12 +178,14 @@
             //showScores().player.innerText='0';
             // showScores().computer.innerText='0';
             // console.log("input is "+input);
+            
             player.innerText = '0';
             computer.innerText = '0';
             alert("ive ran to here!");
             computerWinCount = 0;
             playerWinCount = 0;
-
+            gameResultsDisplay.innerText='';
+                       
         }
 
     }
