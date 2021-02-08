@@ -61,6 +61,7 @@
 
 
     function playGame() {
+
         function generateCompChoice() {
             let weapon = ["rock", "paper", "scissors"];
 
@@ -69,7 +70,6 @@
             }
             return weapon[getRandomNum()];
         }
-
 
         let computerWinCount = 0;
         let playerWinCount = 0;
@@ -116,31 +116,32 @@
             // const playerSelection=prompt("rock, paper or scissors?");
             const computerSelection = generateCompChoice();
             roundsPlayed++;
-            console.log(playRound(playerSelection, computerSelection));
+            // console.log(playRound(playerSelection, computerSelection));
+            playRound(playerSelection, computerSelection);
         }
         const computerScoreDisplay = document.querySelector('#comp-score');
         computerScoreDisplay.innerText = computerWinCount;
         const playerScoreDisplay = document.querySelector('#player-score');
         playerScoreDisplay.innerText = playerWinCount;
 
-        const gameResultsDisplay=document.querySelector('#game-results');
-        
+        const gameResultsDisplay = document.querySelector('#game-results');
+
 
         console.log(`player win count is: ${playerWinCount}`);
         console.log(`computer win count is: ${computerWinCount}`);
 
         if (playerWinCount > computerWinCount) {
             console.log("Congrats you whopped the computer's butt!");
-            gameResultsDisplay.innerText="Congrats you whopped the computer's butt!";
+            gameResultsDisplay.innerText = "Congrats you whopped the computer's butt!";
         }
         else if (playerWinCount < computerWinCount) {
             console.log("You lost ya jabroni");
-            gameResultsDisplay.innerText="You lost ya jabroni";
+            gameResultsDisplay.innerText = "You lost ya jabroni";
 
         }
         else {
             console.log("It's a draw!");
-            gameResultsDisplay.innerText="It's a draw";
+            gameResultsDisplay.innerText = "It's a draw";
         }
         console.log(`rounds played is: ${roundsPlayed}`);
         return "The game has ended";
