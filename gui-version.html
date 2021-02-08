@@ -27,7 +27,7 @@
     <div class="game-area">
 
         <div class="computer-selection">
-            <img src="img/rock.png" alt="image of a rock">
+            <img id="comp-icon" src="img/rock.png" alt="image of a rock">
             <div class="computer-stats">
                 <p>Computer score is:</p>
                 <p id="comp-score">0</p>
@@ -80,24 +80,25 @@
    playerIcons.forEach(key => key.addEventListener('click', playRound));
 
         function playRound(e) {
-            console.log(this.id);
+          
             const playerSelection=this.id;
             const computerSelection =generateCompChoice();
-           
-           // console.log(computerSelection());
+           const computerIcon=document.querySelector("#comp-icon");
+            console.log("comp selection is: "+computerSelection);
+           computerIcon.setAttribute("src","img/"+computerSelection+".png");
             if (playerSelection == computerSelection) {
                 roundCount--;
                 //return "It's a draw!";
             }
             else if (playerSelection == "rock" && computerSelection == "paper") {
                 computerWinCount++;
-                console.log('geezer');
+            
               
                 //return "You lose, paper covers rock!";
             }
             else if (playerSelection == "rock" && computerSelection == "scissors") {
                 playerWinCount++;
-                console.log('sneezer');
+             
                 // return "You win, rock smashes scissors!";
             }
 
@@ -123,8 +124,7 @@
                // return "You win, sissors cuts paper!";
             }
 
-            console.log("hello again!");
-            console.log(roundsPlayed);
+        
             roundsPlayed++;
 
 
