@@ -26,13 +26,13 @@ align-items:center;
    background-color: red;
    height:180px;
 }
-.computer-selection p {
+.computer-selection span {
     text-align:center;
 }
 
 .computer-stats {
     display:flex;
-    justify-self: flex-end;
+    flex-direction: column;  
 }
 
 .comp-icon-container{

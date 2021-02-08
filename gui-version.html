@@ -31,8 +31,10 @@
                 <img id="comp-icon" src="img/rock.png" alt="image of a rock">
             </div>
             <div class="computer-stats">
-                <p>Computer score is:</p>
-                <p id="comp-score">0</p>
+                
+                <span>Computer score is:</span>
+                <span id="comp-score">0</span>
+                
             </div>
         </div>
 
@@ -94,39 +96,31 @@
             }
             else if (playerSelection == "rock" && computerSelection == "paper") {
                 computerWinCount++;
-
-
                 //return "You lose, paper covers rock!";
             }
             else if (playerSelection == "rock" && computerSelection == "scissors") {
                 playerWinCount++;
-
                 // return "You win, rock smashes scissors!";
             }
 
             else if (playerSelection == "paper" && computerSelection == "rock") {
                 playerWinCount++;
-
                 // return "You win, paper covers rock!";
             }
             else if (playerSelection == "paper" && computerSelection == "scissors") {
                 computerWinCount++;
-
                 // return "You lose, scissors cuts paper!";
             }
 
             else if (playerSelection == "scissors" && computerSelection == "rock") {
                 computerWinCount++;
-
                 // return "You lose, rock smashes scissors!";
             }
             else if (playerSelection == "scissors" && computerSelection == "paper") {
                 playerWinCount++;
-
                 // return "You win, sissors cuts paper!";
             }
-
-
+            
             roundsPlayed++;
 
 
@@ -141,6 +135,7 @@
             console.log(`player win count is: ${playerWinCount}`);
             console.log(`computer win count is: ${computerWinCount}`);
 
+            if ((playerWinCount>=5)||(computerWinCount)>=5){
             if (playerWinCount > computerWinCount) {
                 console.log("Congrats you whopped the computer's butt!");
                 gameResultsDisplay.innerText = "Congrats you whopped the computer's butt!";
@@ -154,6 +149,10 @@
                 console.log("It's a draw!");
                 gameResultsDisplay.innerText = "It's a draw";
             }
+
+            playerWinCount=0;
+            computerWinCount=0;
+        }
             console.log(`rounds played is: ${roundsPlayed}`);
 
         }
