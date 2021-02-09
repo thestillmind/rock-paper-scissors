@@ -73,7 +73,8 @@
             function getRandomNum() {
                 return foo = Math.floor(Math.random() * 3);
             }
-            return weapon[getRandomNum()];
+           return weapon[getRandomNum()];
+          
         }
 
         let computerWinCount = 0;
@@ -81,6 +82,8 @@
         let roundCount = 0;
         let roundsPlayed = 0;
         const computerScoreDisplay = document.querySelector('#comp-score');
+        const playerScoreDisplay = document.querySelector('#player-score');
+          
         const gameResultsDisplay = document.querySelector('#game-results');
        // gameResultsDisplay.innerText = "";
         const playerIcons = Array.from(document.querySelectorAll('.weapon'));
@@ -131,18 +134,18 @@
             }
 
             showScores();
-            isGameOver();
+          
         }
         function showScores() {
 
             computerScoreDisplay.innerText = computerWinCount;
-            const playerScoreDisplay = document.querySelector('#player-score');
-            playerScoreDisplay.innerText = playerWinCount;
+           playerScoreDisplay.innerText = playerWinCount;
 
             let foo = {
                 computer: computerScoreDisplay,
                 player: playerScoreDisplay
             };
+            isGameOver();
             return foo;
 
         }
@@ -171,6 +174,9 @@
             resetBtn.addEventListener('click',()=>resetGame(showScores().player, showScores().computer));
             }
 
+            else {
+                return;
+            }
         }
         function resetGame(player, computer) {
             // computerScoreDisplay.innerText ='0';
@@ -181,11 +187,11 @@
             
             player.innerText = '0';
             computer.innerText = '0';
-            alert("ive ran to here!");
+           // alert("ive ran to here!");
             computerWinCount = 0;
             playerWinCount = 0;
             gameResultsDisplay.innerText='';
-                       
+            playGame();
         }
 
     }
