@@ -80,40 +80,57 @@
         let roundCount=0;
         let roundsPlayed=0;
 
-        function playRound(playerSelection, computerSelection) {
+        function playRound(e) {
+         //  let playerSelection=this.id;
+        let playerSelection=e;
 
-            if (playerSelection == computerSelection) {
+            console.log("this is: "+e+ " "+e);
+           //let playerSelection="rock";
+           ///let computerSelection="rock";
+            const computerSelection = generateCompChoice();
+            console.log("comp sel: "+computerSelection+" "+typeof computerSelection);
+            if (playerSelection === computerSelection) {
+                alert("alert 1");
                 roundCount--;
-                return "It's a draw!";
+                //return "It's a draw!";
             }
             else if (playerSelection == "rock" && computerSelection == "paper") {
+                alert("alert 2");
                 computerWinCount++;
-                return "You lose, paper covers rock!";
+              //  return "You lose, paper covers rock!";
             }
             else if (playerSelection == "rock" && computerSelection == "scissors") {
+                alert("alert 3");
                 playerWinCount++;
-                return "You win, rock smashes scissors!";
+                //return "You win, rock smashes scissors!";
             }
 
             else if (playerSelection == "paper" && computerSelection == "rock") {
+                alert("alert 4");
                 playerWinCount++;
-                return "You win, paper covers rock!";
+                //return "You win, paper covers rock!";
             }
             else if (playerSelection == "paper" && computerSelection == "scissors") {
+                alert("alert 5");
                 computerWinCount++;
-                return "You lose, scissors cuts paper!";
+               // return "You lose, scissors cuts paper!";
             }
 
             else if (playerSelection == "scissors" && computerSelection == "rock") {
+                alert("alert 6");
                 computerWinCount++;
-                return "You lose, rock smashes scissors!";
+               // return "You lose, rock smashes scissors!";
             }
+           
             else if (playerSelection == "scissors" && computerSelection == "paper") {
+                alert("alert 7");
                 playerWinCount++;
-                return "You win, sissors cuts paper!";
+                //sreturn "You win, sissors cuts paper!";
             }
+            roundsPlayed++;
+        showScores(roundsPlayed);
         }
-
+        
       //  for(roundCount;roundCount<5;roundCount++){
            
            // const playerSelection=generateCompChoice();
@@ -121,16 +138,19 @@
        // const playerSelection="rock";
 
        const playerIcons = Array.from(document.querySelectorAll('.weapon'));
-      //  playerIcons.forEach(key => key.addEventListener('click', playRound));
+       // playerIcons.forEach(key => key.addEventListener('click', playRound));
+        playerIcons.forEach(key => key.onclick=()=>playRound(key.id));
 
     
-           const computerSelection = generateCompChoice();
-        roundsPlayed++;
+          // const computerSelection = generateCompChoice();
+          function showScores(input){
+         
        // console.log(playRound(input, computerSelection));
        // }
+     
         console.log(`player win count is: ${playerWinCount}`);
         console.log(`computer win count is: ${computerWinCount}`);
-
+            if (input==5){
         if (playerWinCount>computerWinCount){
             console.log("Congrats you whopped the computer's butt!");
         }
@@ -140,8 +160,11 @@
         else {
             console.log("It's a draw!");
         }
+    }
         console.log(`rounds played is: ${roundsPlayed}`);
-        return "The game has ended";
+
+       // return "The game has ended";
+    }
     }
 
     playGame();
