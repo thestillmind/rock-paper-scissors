@@ -40,9 +40,9 @@
 
         <div class="player-selection">
             <div class="player-icons">
-                <img id="rock" class="weapon" onclick='playGame("rock")' src="img/rock.png" alt="image of a rock">
-                <img id="paper" class="weapon" onclick='playGame("paper")' src="img/paper.png" alt="image of paper">
-                <img id="scissors" class="weapon" onclick='playGame("scissors")' src="img/scissors.png" alt="image of paper">
+                <img id="rock" class="weapon" src="img/rock.png" alt="image of a rock">
+                <img id="paper" class="weapon" src="img/paper.png" alt="image of paper">
+                <img id="scissors" class="weapon" src="img/scissors.png" alt="image of paper">
             </div>
             <div class="player-stats">
                 <p>Your score is:</p>
@@ -74,7 +74,7 @@
             return weapon[getRandomNum()];
         }
 
-        
+    
         let computerWinCount = 0;
         let playerWinCount = 0;
         let roundCount=0;
@@ -114,14 +114,20 @@
             }
         }
 
-        for(roundCount;roundCount<5;roundCount++){
+      //  for(roundCount;roundCount<5;roundCount++){
            
            // const playerSelection=generateCompChoice();
-           const playerSelection=prompt("rock, paper or scissors?");
-        const computerSelection = generateCompChoice();
+           //const playerSelection=prompt("rock, paper or scissors?");
+       // const playerSelection="rock";
+
+       const playerIcons = Array.from(document.querySelectorAll('.weapon'));
+      //  playerIcons.forEach(key => key.addEventListener('click', playRound));
+
+    
+           const computerSelection = generateCompChoice();
         roundsPlayed++;
-        console.log(playRound(playerSelection, computerSelection));
-        }
+       // console.log(playRound(input, computerSelection));
+       // }
         console.log(`player win count is: ${playerWinCount}`);
         console.log(`computer win count is: ${computerWinCount}`);
 
@@ -138,7 +144,7 @@
         return "The game has ended";
     }
 
-    console.log(playGame());
+    playGame();
 
 </script>
 
