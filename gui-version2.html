@@ -17,6 +17,15 @@
             src: url(https://fonts.gstatic.com/s/ubuntu/v15/4iCs6KVjbNBYlgoKcg72j00.woff2) format('woff2');
             font-display: swap;
         }
+
+        .animation {
+           animation-name:fade-in; 
+           animation-duration: 2s;                
+        }
+        @keyframes fade-in {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
     </style>
 
 </head>
@@ -28,8 +37,8 @@
 
         <div class="computer-selection">
             <div class="comp-icon-container">
-                <img id="comp-icon" src="img/rock.png" alt="image of a rock">
-            </div>
+              <img class="animation" id="comp-icon" src="img/blank.png" alt="image of a rock">
+               </div>
             <div class="computer-stats">
 
                 <span>Computer score is:</span>
@@ -85,6 +94,8 @@
         compScore.innerText = 0;
         const gameResults=document.querySelector('#game-results');
            gameResults.innerText="";
+           const computerIcon = document.querySelector("#comp-icon");
+          
 
         function playRound(e) {
             //  let playerSelection=this.id;
@@ -94,6 +105,12 @@
             //let playerSelection="rock";
             ///let computerSelection="rock";
             const computerSelection = generateCompChoice();
+            computerIcon.classList.add(".animation");
+
+            computerIcon.setAttribute("src", "img/" + computerSelection + "3.png");
+          //  computerIcon.style.cssText="animation-name:fade-in; animation-duration: 2s;";
+       
+
             console.log("comp sel: " + computerSelection + " " + typeof computerSelection);
             if (playerSelection === computerSelection) {
                 roundCount--;
@@ -128,6 +145,7 @@
             }
             roundsPlayed++;
             showScores(roundsPlayed);
+            
         }
 
         //  for(roundCount;roundCount<5;roundCount++){
