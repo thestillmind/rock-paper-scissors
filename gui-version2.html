@@ -74,97 +74,104 @@
             return weapon[getRandomNum()];
         }
 
-    
+
         let computerWinCount = 0;
         let playerWinCount = 0;
-        let roundCount=0;
-        let roundsPlayed=0;
+        let roundCount = 0;
+        let roundsPlayed = 0;
+        const playerScore = document.querySelector('#player-score');
+        playerScore.innerText = 0;
+        const compScore = document.querySelector('#comp-score');
+        compScore.innerText = 0;
+        const gameResults=document.querySelector('#game-results');
+           gameResults.innerText="";
 
         function playRound(e) {
-         //  let playerSelection=this.id;
-        let playerSelection=e;
+            //  let playerSelection=this.id;
+            let playerSelection = e;
 
-            console.log("this is: "+e+ " "+e);
-           //let playerSelection="rock";
-           ///let computerSelection="rock";
+            console.log("this is: " + e + " " + e);
+            //let playerSelection="rock";
+            ///let computerSelection="rock";
             const computerSelection = generateCompChoice();
-            console.log("comp sel: "+computerSelection+" "+typeof computerSelection);
+            console.log("comp sel: " + computerSelection + " " + typeof computerSelection);
             if (playerSelection === computerSelection) {
-                alert("alert 1");
                 roundCount--;
                 //return "It's a draw!";
             }
             else if (playerSelection == "rock" && computerSelection == "paper") {
-                alert("alert 2");
                 computerWinCount++;
-              //  return "You lose, paper covers rock!";
+                //  return "You lose, paper covers rock!";
             }
             else if (playerSelection == "rock" && computerSelection == "scissors") {
-                alert("alert 3");
                 playerWinCount++;
                 //return "You win, rock smashes scissors!";
             }
 
             else if (playerSelection == "paper" && computerSelection == "rock") {
-                alert("alert 4");
                 playerWinCount++;
                 //return "You win, paper covers rock!";
             }
             else if (playerSelection == "paper" && computerSelection == "scissors") {
-                alert("alert 5");
                 computerWinCount++;
-               // return "You lose, scissors cuts paper!";
+                // return "You lose, scissors cuts paper!";
             }
 
             else if (playerSelection == "scissors" && computerSelection == "rock") {
-                alert("alert 6");
                 computerWinCount++;
-               // return "You lose, rock smashes scissors!";
+                // return "You lose, rock smashes scissors!";
             }
-           
+
             else if (playerSelection == "scissors" && computerSelection == "paper") {
-                alert("alert 7");
                 playerWinCount++;
                 //sreturn "You win, sissors cuts paper!";
             }
             roundsPlayed++;
-        showScores(roundsPlayed);
+            showScores(roundsPlayed);
         }
-        
-      //  for(roundCount;roundCount<5;roundCount++){
-           
-           // const playerSelection=generateCompChoice();
-           //const playerSelection=prompt("rock, paper or scissors?");
-       // const playerSelection="rock";
 
-       const playerIcons = Array.from(document.querySelectorAll('.weapon'));
-       // playerIcons.forEach(key => key.addEventListener('click', playRound));
-        playerIcons.forEach(key => key.onclick=()=>playRound(key.id));
+        //  for(roundCount;roundCount<5;roundCount++){
 
-    
-          // const computerSelection = generateCompChoice();
-          function showScores(input){
-         
-       // console.log(playRound(input, computerSelection));
-       // }
-     
-        console.log(`player win count is: ${playerWinCount}`);
-        console.log(`computer win count is: ${computerWinCount}`);
-            if (input==5){
-        if (playerWinCount>computerWinCount){
-            console.log("Congrats you whopped the computer's butt!");
-        }
-        else if (playerWinCount<computerWinCount){
-            console.log("You lost ya jabroni");
-        }
-        else {
-            console.log("It's a draw!");
-        }
-    }
-        console.log(`rounds played is: ${roundsPlayed}`);
+        // const playerSelection=generateCompChoice();
+        //const playerSelection=prompt("rock, paper or scissors?");
+        // const playerSelection="rock";
 
-       // return "The game has ended";
-    }
+        const playerIcons = Array.from(document.querySelectorAll('.weapon'));
+        // playerIcons.forEach(key => key.addEventListener('click', playRound));
+        playerIcons.forEach(key => key.onclick = () => playRound(key.id));
+
+
+        // const computerSelection = generateCompChoice();
+        function showScores(input) {
+
+            // console.log(playRound(input, computerSelection));
+            // }
+             console.log(`player win count is: ${playerWinCount}`);
+            playerScore.innerText = playerWinCount;
+            console.log(`computer win count is: ${computerWinCount}`);
+            compScore.innerText = computerWinCount;
+          //  if (input == 5) {
+              if (playerWinCount==5||computerWinCount==5){
+                if (playerWinCount > computerWinCount) {
+                    console.log("Congrats you whopped the computer's butt!");
+                    gameResults.innerText="Congrats you whopped the computer's butt!";
+                }
+                else if (playerWinCount < computerWinCount) {
+                    console.log("You lost ya jabroni");
+                    gameResults.innerText="You lost ya jabroni";
+                }
+                else {
+                    console.log("It's a draw!");
+                }
+                playerIcons.forEach(key => key.onclick = () => null);
+
+            }
+            console.log(`rounds played is: ${roundsPlayed}`);
+
+            // return "The game has ended";
+        }
+        const resetBtn = document.querySelector('button');
+        resetBtn.onclick = () => playGame();
     }
 
     playGame();
